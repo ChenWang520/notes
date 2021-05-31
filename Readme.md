@@ -665,7 +665,7 @@ BCNF：消除了主属性对码的部分和传递函数依赖
 存在哪些问题：存在数据冗余，数据增加更新删除异常！
 
 ## 两段锁协议
-（2PL）指同一事务对任何数据进行读写之前必须对该数据加锁；在释放一个封锁之后，该事务不再申请和获得任务其他封锁。
+（2PL）指同一事务对任何数据进行读写之前必须对该数据加锁；**在释放一个封锁之后，该事务不再申请和获得任务其他封锁。**
 两段：事务分为两个阶段。第一阶段获得封锁，也称扩展阶段。第二阶段释放封锁，也称收缩阶段。
 
 如果事务遵循两段锁协议，那么它们的并发调度是可串行化的。两段锁是可串行化的充分条件，而不是必要条件。即：遵循两段锁协议，一定是可串行化的，不遵循两段锁协议，可能是可串行化的。
@@ -680,11 +680,24 @@ BCNF：消除了主属性对码的部分和传递函数依赖
 >不可重复读（隔了一段时间再读，中间被别人修改了）
 
 
-共享锁：用于只读，其他事务只能再加共享锁，不能加排他锁
-排他锁：其他事务不能加任何锁
+共享锁（SLock）：用于只读，其他事务只能再加共享锁，不能加排他锁
+排他锁（XLock）：其他事务不能加任何锁
 
+## SQL
+primary key
+references Table(Cno)
+default getdate()
+foreign key Sno references Table(Cno)
+check
 
+exists notin
+ON DELETE CASCADE 级联删除
+ON UPDATE CASCADE 级联更新
 
+create view 创建视图
+create trrigger 名 before|after delete|insert|update of [列表]  on 表 创建触发器
+referencing 
+for each row
 
 
 
